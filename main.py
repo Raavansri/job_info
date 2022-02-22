@@ -7,6 +7,7 @@ unwant=input("->")
 print(f"filtering jobs which dont have:{unwant}")
 
 def scrape ():
+    
     getreq=requests.get("https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=machine+learning&txtLocation=mumbai&cboWorkExp1=1")       # requset for url to get inspect
     soup = BeautifulSoup(getreq.content,'lxml')    
     tags = soup.find_all('li',class_="clearfix job-bx wht-shd-bx")     
@@ -24,8 +25,8 @@ def scrape ():
                     cr.write(f"skills:{skill.strip()}\n")
                     cr.write(loc.strip())
                     cr.write(f"\nmore info:{link}")
-
                     cr.write(" ")
+                
                 print('detail saved in details file!')
 
 if __name__=='__main__':
